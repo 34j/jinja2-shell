@@ -45,13 +45,17 @@ pip install jinja2-shell
 As statement:
 
 ```jinja2
-{% shell "echo 'Hello World'" %}
-{% shell "echo 'Hello World'", False %}
+{% shell "echo Hello World" %}
+{% shell "echo Hello World", False %}
+{% shell "echo \"Hello World\"", False %}
+{% shell "echo 'Hello World', False %}
 ```
 
 ```text
 Hello World
 Hello World (Ubuntu), Hello World\n (Windows)
+Hello World (Ubuntu), "Hello World"\n (Windows)
+Hello World (Ubuntu), 'Hello World'\n (Windows)
 ```
 
 As expression:
