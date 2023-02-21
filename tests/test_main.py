@@ -41,3 +41,9 @@ class TestMain(TestCase):
             "{{ " + f'"{self.command}"' + " | shell }}"
         )
         self.assertEqual(template.render(), self.expected)
+
+    def test_expression_no_rstrip(self):
+        template = self.environment.from_string(
+            "{{ " + f'"{self.command}"' + " | shell(False) }}"
+        )
+        self.assertEqual(template.render(), self.expected + "\n")
