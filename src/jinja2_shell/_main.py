@@ -18,11 +18,11 @@ def _run_shell(command: str, rstrip: bool = True) -> str:
     str
         The output of the shell command.
     """
+    import shlex  # nosec
     import subprocess  # nosec
 
     process = subprocess.run(  # nosec
-        command,
-        shell=True,
+        shlex.split(command),
         capture_output=True,
         text=True,
     )  # nosec
