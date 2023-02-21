@@ -22,7 +22,6 @@ def _run_shell(command: str, rstrip: bool = True) -> str:
 
     process = subprocess.run(  # nosec
         command,
-        shell=True,
         capture_output=True,
         text=True,
     )  # nosec
