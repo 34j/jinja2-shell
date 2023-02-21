@@ -3,11 +3,6 @@
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
-from pathlib import Path
-from typing import Any
-
-from sphinx.application import Sphinx
-from sphinx.ext import apidoc
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -54,25 +49,3 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
-
-
-# -- Automatically run sphinx-apidoc -----------------------------------------
-
-
-def run_apidoc(_: Any) -> None:
-    docs_path = Path(__file__).parent
-    module_path = docs_path.parent / "jinja2_shell"
-
-    apidoc.main(
-        [
-            "--force",
-            "--module-first",
-            "-o",
-            docs_path.as_posix(),
-            module_path.as_posix(),
-        ]
-    )
-
-
-def setup(app: Sphinx) -> None:
-    app.connect("builder-inited", run_apidoc)
