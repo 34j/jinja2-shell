@@ -20,7 +20,7 @@ contributing
 :caption: API Reference
 :maxdepth: 2
 
-jinja2-shell
+jinja2_shell
 ```
 
 ```{include} ../README.md
