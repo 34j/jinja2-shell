@@ -3,6 +3,11 @@
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
+from pathlib import Path
+from typing import Any
+
+from sphinx.application import Sphinx
+from sphinx.ext import apidoc
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -10,7 +15,7 @@
 project = "jinja2-shell"
 copyright = "2023, 34j"
 author = "34j"
-release = '0.0.0'
+release = "0.0.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -53,22 +58,25 @@ html_static_path = ["_static"]
 
 # -- Automatically run sphinx-apidoc -----------------------------------------
 
-def run_apidoc(_):
-    from sphinx import apidoc
 
-    docs_path = os.path.dirname(__file__)
-    apidoc_path = os.path.join(docs_path, 'api')
-    module_path = os.path.join(docs_path, '..', 'semantic_release')
+def run_apidoc(_: Any) -> None:
+    docs_path = Path(__file__).parent
+    apidoc_path = docs_path / "api"
+    module_path = docs_path.parent / "semantic_release"
 
-    apidoc.main([
-        '--force',
-        '--module-first',
-        '--separate',
-        '-d', '3',
-        '-o', apidoc_path,
-        module_path
-    ])
+    apidoc.main(
+        [
+            "--force",
+            "--module-first",
+            "--separate",
+            "-d",
+            "3",
+            "-o",
+            apidoc_path.as_posix(),
+            module_path.as_posix(),
+        ]
+    )
 
 
-def setup(app):
-    app.connect('builder-inited', run_apidoc)
+def setup(app: Sphinx) -> None:
+    app.connect("builder-inited", run_apidoc)

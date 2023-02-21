@@ -30,13 +30,47 @@
   <img src="https://img.shields.io/pypi/l/jinja2-shell.svg?style=flat-square" alt="License">
 </p>
 
-Jinja2 Extension for running shell commands
+Jinja2 Extension for running shell commands.
 
 ## Installation
 
 Install this via pip (or your favourite package manager):
 
-`pip install jinja2-shell`
+```shell
+pip install jinja2-shell
+```
+
+## Usage
+
+As statement:
+
+```jinja2
+{% shell "echo 'Hello World'" %}
+```
+
+```text
+Hello World
+```
+
+As expression:
+
+```jinja2
+{{ "Hello World" | shell }}
+```
+
+```text
+Hello World
+```
+
+Do not strip newlines:
+
+```jinja2
+{{ shell("echo 'Hello World'", False) }}
+```
+
+```text
+Hello World\n
+```
 
 ## Contributors ✨
 
@@ -44,8 +78,19 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-<!-- markdownlint-enable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/34j"><img src="https://avatars.githubusercontent.com/u/55338215?v=4?s=80" width="80px;" alt="34j"/><br /><sub><b>34j</b></sub></a><br /><a href="https://github.com/34j/jinja2-shell/commits?author=34j" title="Code">💻</a> <a href="#ideas-34j" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/34j/jinja2-shell/commits?author=34j" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 <!-- prettier-ignore-end -->
 
