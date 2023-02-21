@@ -10,7 +10,10 @@ from parameterized import parameterized_class
     [
         ("echo Hello World", "Hello World"),
         ("echo 'Hello World'", "'Hello World'" if os.name == "nt" else "Hello World"),
-        ('echo "Hello World"', '"Hello World"' if os.name == "nt" else "Hello World"),
+        (
+            r"echo \"Hello World\"",
+            '"Hello World"' if os.name == "nt" else "Hello World",
+        ),
         (
             "echo Hello World | tr ' ' '_'",
             "Hello_World_" if os.name == "nt" else "Hello_World",
