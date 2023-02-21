@@ -1,3 +1,4 @@
+import os
 from unittest import TestCase
 
 from jinja2 import Environment
@@ -8,7 +9,10 @@ from parameterized import parameterized_class
     ("command", "expected"),
     [
         ("echo Hello World", "Hello World"),
-        ("echo Hello World | tr ' ' '_'", "Hello_World_"),
+        (
+            "echo Hello World | tr ' ' '_'",
+            "Hello_World_" if os.name == "nt" else "Hello_World",
+        ),
     ],
 )
 class TestMain(TestCase):
