@@ -30,7 +30,7 @@
   <img src="https://img.shields.io/pypi/l/jinja2-shell.svg?style=flat-square" alt="License">
 </p>
 
-Jinja2 Extension for running shell commands.
+Jinja2 Extension for running shell commands. Makes use of `subprocess.run(shell=False)`.
 
 ## Installation
 
@@ -42,31 +42,37 @@ pip install jinja2-shell
 
 ## Usage
 
+If the second argument is `True` (default), the output is stripped of trailing whitespace and newlines. (`a\n\b \n` -> `a\nb`)
+
 As statement:
 
 ```jinja2
 {% shell "echo Hello World" %}
 {% shell "echo Hello World", False %}
-{% shell "echo \"Hello World\"", False %}
 {% shell "echo 'Hello World', False %}
+{% shell "echo \"Hello World\"", False %}
 ```
 
 ```text
 Hello World
 Hello World (Ubuntu), Hello World\n (Windows)
-Hello World (Ubuntu), "Hello World"\n (Windows)
-Hello World (Ubuntu), 'Hello World'\n (Windows)
+Hello World (Ubuntu), Hello World\n (Windows)
+Hello World (Ubuntu), Hello World\n (Windows)
 ```
 
 As expression:
 
 ```jinja2
-{{ "Hello World" | shell }}
-{{ "Hello World" | shell(False) }}}
+{{ "echo Hello World" | shell }}
+{{ "echo Hello World" | shell(False) }}
+{{ "echo 'Hello World'" | shell(False) }}
+{{ "echo \"Hello World\"" | shell(False) }
 ```
 
 ```text
 Hello World
+Hello World (Ubuntu), Hello World\n (Windows)
+Hello World (Ubuntu), Hello World\n (Windows)
 Hello World (Ubuntu), Hello World\n (Windows)
 ```
 
