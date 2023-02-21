@@ -30,13 +30,47 @@
   <img src="https://img.shields.io/pypi/l/jinja2-shell.svg?style=flat-square" alt="License">
 </p>
 
-Jinja2 Extension for running shell commands
+Jinja2 Extension for running shell commands.
 
 ## Installation
 
 Install this via pip (or your favourite package manager):
 
-`pip install jinja2-shell`
+```shell
+pip install jinja2-shell
+```
+
+## Usage
+
+As statement:
+
+```jinja2
+{% shell "echo 'Hello World'" %}
+```
+
+```text
+Hello World
+```
+
+As expression:
+
+```jinja2
+{{ "Hello World" | shell }}
+```
+
+```text
+Hello World
+```
+
+Do not strip newlines:
+
+```jinja2
+{{ shell("echo 'Hello World'", False) }}
+```
+
+```text
+Hello World\n
+```
 
 ## Contributors ✨
 
