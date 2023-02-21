@@ -61,18 +61,14 @@ html_static_path = ["_static"]
 
 def run_apidoc(_: Any) -> None:
     docs_path = Path(__file__).parent
-    apidoc_path = docs_path / "api"
-    module_path = docs_path.parent / "semantic_release"
+    module_path = docs_path.parent / "jinja2_shell"
 
     apidoc.main(
         [
             "--force",
             "--module-first",
-            "--separate",
-            "-d",
-            "3",
             "-o",
-            apidoc_path.as_posix(),
+            docs_path.as_posix(),
             module_path.as_posix(),
         ]
     )
