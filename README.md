@@ -42,9 +42,11 @@ pip install jinja2-shell
 
 ## Usage
 
+The extension class is `jinja2_shell.ShellExtension`.
+
 If the second argument is `True` (default), the output is stripped of trailing whitespace and newlines. (`a\n\b \n` -> `a\nb`)
 
-As statement:
+As a statement:
 
 ```jinja2
 {% shell "echo Hello World" %}
@@ -60,7 +62,7 @@ Hello World (Ubuntu), Hello World\n (Windows)
 Hello World (Ubuntu), Hello World\n (Windows)
 ```
 
-As expression:
+As a expression:
 
 ```jinja2
 {{ "echo Hello World" | shell }}
