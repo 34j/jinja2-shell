@@ -2,6 +2,17 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.3 (2024-01-11)
+
+### Fix
+
+* **deps:** Update dependency jinja2 to v3.1.3 ([#96](https://github.com/34j/jinja2-shell/issues/96)) ([`4255f9a`](https://github.com/34j/jinja2-shell/commit/4255f9a10f12f059f2cc2e012c06f582e744a3b4))
+
+### Documentation
+
+* **readme:** Note extensioin class name ([`9188643`](https://github.com/34j/jinja2-shell/commit/9188643a0549dd3bbc98be757ecbb3ebbf37de5b))
+* Fix docs ([`7202b9a`](https://github.com/34j/jinja2-shell/commit/7202b9a6e3f1d85d308eb7807d1d1d25d610b9c1))
+
 ## v0.1.2 (2023-02-21)
 ### Fix
 * Do not use shell ([#2](https://github.com/34j/jinja2-shell/issues/2)) ([`2813511`](https://github.com/34j/jinja2-shell/commit/281351140d604781b75330dbe3ae8275f0ebe6f2))
