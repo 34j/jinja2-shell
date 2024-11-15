@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.4 (2024-11-15)
+
+### Fix
+
+* **deps:** Update dependency jinja2 to v3.1.4 ([#105](https://github.com/34j/jinja2-shell/issues/105)) ([`db84f7e`](https://github.com/34j/jinja2-shell/commit/db84f7efe1c28c15e54b4ac9721690353a77198b))
+
 ## v0.1.3 (2024-01-11)
 
 ### Fix
