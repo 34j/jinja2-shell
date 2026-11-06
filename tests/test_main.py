@@ -22,28 +22,22 @@ class TestMain(TestCase):
     expected: str
 
     def setUp(self):
-        self.environment = Environment(extensions=["jinja2_shell.ShellExtension"])
+        self.environment = Environment(  # noqa: S701
+            extensions=["jinja2_shell.ShellExtension"]
+        )
 
     def test_statement(self):
-        template = self.environment.from_string(
-            "{% shell " + f'"{self.command}"' + " %}"
-        )
-        self.assertEqual(template.render(), self.expected)
+        template = self.environment.from_string("{% shell " + f'"{self.command}"' + " %}")
+        assert template.render() == self.expected
 
     def test_statement_no_rstrip(self):
-        template = self.environment.from_string(
-            "{% shell " + f'"{self.command}"' + ", False %}"
-        )
-        self.assertEqual(template.render(), self.expected + "\n")
+        template = self.environment.from_string("{% shell " + f'"{self.command}"' + ", False %}")
+        assert template.render() == self.expected + "\n"
 
     def test_expression(self):
-        template = self.environment.from_string(
-            "{{ " + f'"{self.command}"' + " | shell }}"
-        )
-        self.assertEqual(template.render(), self.expected)
+        template = self.environment.from_string("{{ " + f'"{self.command}"' + " | shell }}")
+        assert template.render() == self.expected
 
     def test_expression_no_rstrip(self):
-        template = self.environment.from_string(
-            "{{ " + f'"{self.command}"' + " | shell(False) }}"
-        )
-        self.assertEqual(template.render(), self.expected + "\n")
+        template = self.environment.from_string("{{ " + f'"{self.command}"' + " | shell(False) }}")
+        assert template.render() == self.expected + "\n"
