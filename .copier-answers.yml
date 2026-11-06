@@ -1,6 +1,6 @@
 # Changes here will be overwritten by Copier
 _commit: a08e36f
-_src_path: C:\Users\m\MyMain\dev\pypackage-template-fork
+_src_path: gh:34j/pypackage-template-fork
 add_me_as_contributor: true
 copyright_year: '2023'
 documentation: true
