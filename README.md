@@ -56,14 +56,32 @@ If the second argument is `True` (default), the output is stripped of trailing w
 
 As a statement:
 
-```text
+```jinja2
 {% shell "echo Hello World" %}
 {% shell "echo Hello World", False %}
+{% shell "echo 'Hello World', False %}
+{% shell "echo \"Hello World\"", False %}
+```
+
+```text
+Hello World
+Hello World (Ubuntu), Hello World\n (Windows)
+Hello World (Ubuntu), Hello World\n (Windows)
+Hello World (Ubuntu), Hello World\n (Windows)
 ```
 
 As a expression:
 
-```text
+```jinja2
 {{ "echo Hello World" | shell }}
 {{ "echo Hello World" | shell(False) }}
+{{ "echo 'Hello World'" | shell(False) }}
+{{ "echo \"Hello World\"" | shell(False) }
+```
+
+```text
+Hello World
+Hello World (Ubuntu), Hello World\n (Windows)
+Hello World (Ubuntu), Hello World\n (Windows)
+Hello World (Ubuntu), Hello World\n (Windows)
 ```
