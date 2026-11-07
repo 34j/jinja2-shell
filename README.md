@@ -38,7 +38,7 @@
 
 ---
 
-Jinja2 Extension for getting eval() result.
+Jinja2 Extension for running shell commands. Makes use of `subprocess.run(shell=False)`.
 
 ## Installation
 
@@ -56,14 +56,56 @@ If the second argument is `True` (default), the output is stripped of trailing w
 
 As a statement:
 
-```text
+```jinja2
 {% shell "echo Hello World" %}
 {% shell "echo Hello World", False %}
+{% shell "echo 'Hello World', False %}
+{% shell "echo \"Hello World\"", False %}
+```
+
+```text
+Hello World
+Hello World (Ubuntu), Hello World\n (Windows)
+Hello World (Ubuntu), Hello World\n (Windows)
+Hello World (Ubuntu), Hello World\n (Windows)
 ```
 
 As a expression:
 
-```text
+```jinja2
 {{ "echo Hello World" | shell }}
 {{ "echo Hello World" | shell(False) }}
+{{ "echo 'Hello World'" | shell(False) }}
+{{ "echo \"Hello World\"" | shell(False) }
 ```
+
+```text
+Hello World
+Hello World (Ubuntu), Hello World\n (Windows)
+Hello World (Ubuntu), Hello World\n (Windows)
+Hello World (Ubuntu), Hello World\n (Windows)
+```
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- prettier-ignore-start -->
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/34j"><img src="https://avatars.githubusercontent.com/u/55338215?v=4?s=80" width="80px;" alt="34j"/><br /><sub><b>34j</b></sub></a><br /><a href="https://github.com/34j/jinja2-shell/commits?author=34j" title="Code">💻</a> <a href="#ideas-34j" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/34j/jinja2-shell/commits?author=34j" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+<!-- prettier-ignore-end -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
